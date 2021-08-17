@@ -1,0 +1,40 @@
+no_points_tx_00	(are there )?(any )?( types of )?transactions? (that )?(i can't earn points from|do not earn( me)? any points)
+no_points_tx_00	(are there )?(any )?transactions that won't earn reward points
+no_points_tx_00	why (haven|didn)'t i earn (any )?rewards from (that transaction|some transactions|transactions|my transactions)
+no_points_tx_00	(are there any transactions that|which transactions) don't award (any )?points
+no_points_tx_00	((can|could) you )?(explain|tell me|let me know) which transactions do not qualify for points
+no_points_tx_00	((can you )?tell me )?what transactions do not earn (me )?points
+no_points_tx_00	can you tell me what transactions do or do not award points
+no_points_tx_00	(how come|why) my transactions are not earning (any )?points( for me)?
+no_points_tx_00	(how come|why) (my |those )?transactions (don't earn|haven't earned) points
+no_points_tx_00	(tell me )?(what|which) (kind of )?transactions will not grant me points 
+no_points_tx_00	(what transactions|transactions that) do not qualify for points 
+no_points_tx_00	(which transactions are|any transactions) not eligible for points
+no_points_tx_00	why (am i|i'm) not getting points for (my |some |certain )transactions
+no_points_tx_00	(why aren't my transactions|(my )?transactions( aren't| don't appear to be)) earning points( (correctly|as expected))?
+accelerator_01	tell me ((something )?(more )?about accelerators|what accelerators are|what an accelerator is)
+accelerator_01	(how|where) (do|can) i use accelerators?
+accelerator_01	what (do|can) i use (the |an )?accelerators? for
+accelerator_01	what is (the |an )?accelerators? (used |meant )?for
+accelerator_01	what (do|can) i do with (the |an )?accelerator
+accelerator_01	what is an accelerator( for| meant for)
+accelerator_01	what (does an accelerator|do accelerators) do
+accelerator_01	what is the purpose of (an accelerator|accelerator)
+card_benefits_02	what benefits does my card qualify me for
+card_benefits_02	list( of) (card benefits|benefits for the card)
+card_benefits_02	what benefits (am i eligible|do i qualify) for
+card_benefits_02	(where can i find |say |tell me )?more about (the )?(benefits of (my |the )card|card benefits)
+shoprunner_03	what stores (can i use shoprunner with|accept shoprunner)
+shoprunner_03	(can i )?use shoprunner (with|at) any store
+shoprunner_03	((getting|get) started|how do i get started) with shop ?runner
+shoprunner_03	(where|how) (can|do) i (use|setup) shoprunner
+postmates_04	(tell me )?(what postmates (does|can do)|what does postmates do|postmates means|does postmates mean)
+postmates_04	(tell me )?what (postmates (is|means)|is postmates( (used |meant )?for)?)
+postmates_04	what is postmates( for| used for)?
+postmates_04	what is the (point|use|usage|meaning) of postmates
+postmates_04	(define|definition of|meaning of) postmates
+postmates_04	how (do i|does one|to) (use|setup|get) postmates
+postmates_04	postmates is (for )?what
+im_not_around_05	what do you (typically |like to )?do when i'm not (here|(talking|speaking) to you)
+im_not_around_05	what do you do (during your free time|on your days off|when you're bored)
+im_not_around_05	(how do you pass the time|what (other )?(activities|things) do you do) when you're not speaking (to|with) (customers|me|us( customers)?|clients)
