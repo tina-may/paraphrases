@@ -11,8 +11,6 @@ import spacy
 from spacy.matcher import Matcher
 
 
-
-
 class Paraphrase:
     def __init__(self, construction_data, transformation_type, label, text):
         self.label = label
@@ -21,7 +19,7 @@ class Paraphrase:
         self.construction_data = construction_data
 
     def get_string(self):
-        out = ": ".join([self.label,self.transformation_type.__name__.upper()]) + ": "
+        out = ": ".join([self.label, self.transformation_type.__name__.upper()]) + ": "
         data = ""
         if self.construction_data:
             data = self.construction_data + ">"
@@ -29,19 +27,12 @@ class Paraphrase:
         out += self.text
         return out
 
-
-
-
-        
-
-
 class Paraphrase_Maker:
     nlp = spacy.load("en_core_web_sm")
     existing_texts = set([])
     existing_paraphrases = set([])
     non_seeds_counter = {}
     label2paraphrases = {}
-
 
     def __init__(self, regex_tsv, general_rules_tsv, seeds_tsv, pattern_json):
         #open regexes
@@ -64,10 +55,6 @@ class Paraphrase_Maker:
         #open chunking rules
         self.chunk_matcher = self.get_pattern_matcher(pattern_json)
 
-  
-  
-
-
     def tsv_opener(self, path_):
         out = set([])
         with open(path_) as x:
@@ -76,7 +63,6 @@ class Paraphrase_Maker:
                 b = self.norm(b)
                 out.add((a,b))
         return out
-
 
     def paraphrase_adder(self,p):
         self.existing_texts.add(p.text)
@@ -90,8 +76,6 @@ class Paraphrase_Maker:
         out = re.sub(" +"," ",out)
         return out
 
-
-
     def get_pattern_matcher(self,pattern_json):
         with open(pattern_json) as pj:
             patterns = json.load(pj)
@@ -99,7 +83,6 @@ class Paraphrase_Maker:
         for pattern in patterns:
             matcher.add("",[pattern])
         return matcher
-
 
     def lemmatize_a_word(self,p):
         s = p.text
@@ -120,7 +103,6 @@ class Paraphrase_Maker:
         detokenizer = TreebankWordDetokenizer()
         return Paraphrase(s, self.lemmatize_a_word, p.label, detokenizer.detokenize(toks).replace(" .","."))
         #return detokenizer.detokenize(toks).replace(" .",".")
-        
 
     def replace_from_general_rules(self,p):
         s = p.text[:]
