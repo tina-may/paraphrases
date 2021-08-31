@@ -1,12 +1,12 @@
-import argparse
+import argparse,sys
 import random
 import re
 import nltk
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize.treebank import TreebankWordDetokenizer
 import rstr
-import sys
 import json
+import pandas as pd
 import spacy
 from spacy.matcher import Matcher
 
@@ -23,7 +23,7 @@ class Paraphrase:
             [self.label, self.transformation_type.__name__.upper()]) + ": "
         data = ""
         if self.construction_data:
-            data = self.construction_data + ">"
+            data = self.construction_data + " > "
         out += data
         out += self.text
         return out
@@ -35,6 +35,7 @@ class Paraphrase_Maker:
     existing_paraphrases = set([])
     non_seeds_counter = {}
     label2paraphrases = {}
+    df = pd.DataFrame(columns = ["label","text","transformation_type","construction_data"])
 
     def __init__(self, regex_tsv, general_rules_tsv, seeds_tsv, pattern_json):
         # open regexes
@@ -46,7 +47,7 @@ class Paraphrase_Maker:
         # open seeds
         label_seed_pairs = self.tsv_opener(seeds_tsv)
         for (label, seed) in label_seed_pairs:
-            seed_paraphrase = Paraphrase(None, None, label, seed)
+            seed_paraphrase = Paraphrase(None, self.seed, label, seed)
             self.non_seeds_counter[label] = 0
             if label in self.label2paraphrases:
                 self.label2paraphrases[label].append(seed_paraphrase)
@@ -66,12 +67,17 @@ class Paraphrase_Maker:
                 out.add((a, b))
         return out
 
+    def seed(self):
+        pass
+
     def paraphrase_adder(self, p):
         self.existing_texts.add(p.text)
         self.existing_paraphrases.add(p)
         if p.transformation_type is not None:
             self.non_seeds_counter[p.label] += 1
         self.label2paraphrases[p.label].append(p)
+        self.df.loc[len(self.df.index)] = \
+        {"label":p.label,"text":p.text,"transformation_type":p.transformation_type.__name__,"construction_data":p.construction_data}
 
     def norm(self, s):
         out = s.strip().lower().rstrip(".?!")
@@ -94,7 +100,7 @@ class Paraphrase_Maker:
         i_looks = 0
         found_lem = True
         wordnet_lemmatizer = WordNetLemmatizer()
-        while pos[i_change][1] not in ["VBZ", "VBG", "NNS", "VBD"] /
+        while pos[i_change][1] not in ["VBZ", "VBG", "NNS", "VBD"] \
         or toks[i_change] in ["being", "is", "are", "were", "was", "am", "savings"]:
             i_change = random.choice(range(0, len(pos)))
             i_looks += 1
@@ -135,7 +141,7 @@ class Paraphrase_Maker:
             return Paraphrase(p.text, self.get_pattern_chunks, p.label, span.text)
         return p
 
-    def create_paraphrase(self, paraphrase_in, transformer, data):
+    def create_paraphrase(self, paraphrase_in, transformer):
         return transformer(paraphrase_in)
 
 
@@ -163,7 +169,6 @@ select_labels = list(paraphrase_maker.non_seeds_counter.keys())
 transformers = [paraphrase_maker.get_pattern_chunks, paraphrase_maker.lemmatize_a_word,
                 paraphrase_maker.replace_from_general_rules, paraphrase_maker.generate_from_regex]
 
-woutfile = open("out", "w")
 while min(paraphrase_maker.non_seeds_counter.values()) < int(args.end_number):
     select_labels = [
         label for label in select_labels if paraphrase_maker.non_seeds_counter[label] < int(args.end_number)]
@@ -172,13 +177,13 @@ while min(paraphrase_maker.non_seeds_counter.values()) < int(args.end_number):
     paraphrases_for_label = paraphrase_maker.label2paraphrases[select_label]
     paraphrase_in = random.sample(paraphrases_for_label, 1)[0]
     new_paraphrase = paraphrase_maker.create_paraphrase(
-        paraphrase_in, transformer, {})
+        paraphrase_in, transformer)
 
     if new_paraphrase.text not in paraphrase_maker.existing_texts:
         paraphrase_maker.paraphrase_adder(new_paraphrase)
-        print(new_paraphrase.get_string())
-        woutfile.write(
-            "\t".join([new_paraphrase.label, new_paraphrase.text]) + "\n")
 
 
-woutfile.close()
+
+
+
+paraphrase_maker.df.to_csv(sys.stdout)
