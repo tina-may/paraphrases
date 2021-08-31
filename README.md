@@ -20,8 +20,8 @@ INPUT FILES:
 See sample input files for the proper formatting, etc.
 
 RUNNING THE DEMO:
-To run the demo, you must enter all the required inputs, like this: 
-	python generate_paraphrases.py --regex_tsv regex_tsv.tsv --general_rules_tsv general_rules_tsv.tsv --patterns_json patterns_json.json --seeds_tsv seeds_tsv.tsv --end_number 50 > out.tsv
+To run the sample demo, you must enter all the required sample inputs, like this: 
+	python generate_paraphrases.py --regex_tsv regex_tsv.tsv --general_rules_tsv general_rules_tsv.tsv --patterns_json patterns_json.json --seeds_tsv seeds_tsv.tsv --end_number 50 > out.csv
 
 
 CREATING A NEW INTENT:
@@ -30,5 +30,5 @@ To create a new intent, at least one canonical seed must be added to seeds_tsv.t
 OUTPUT CSV:
 The script outputs a csv to stdout with the canonical utterances and paraphrases together along with their respective labels and some information showing how the paraphrase had been generated. For example: 
 	postmates_04,usage of postmates,get_pattern_chunks,what is the usage of postmates
-In this case "usage of postmates" was generated as a chunk parse (chunks defined in patterns_json argument)
+In this case, "usage of postmates" paraphrase was generated as a chunk parse (chunks defined in patterns_json argument) extracted from the sentence "what is the usage of postmates". 
 

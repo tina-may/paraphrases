@@ -1,10 +1,11 @@
 [
-[{"POS": "VERB", "OP": "+"},{"LEMMA": "accelerator"}],
-[{"LEMMA":"what","OP":"?"},{"LEMMA": "transaction"},{"IS_ALPHA": true, "OP": "+"},{"LEMMA": "point"}],
+[{"LEMMA": "benefit"},{"TAG": "IN"},{"TAG": "PRP$", "OP": "?"},{"POS": "NOUN", "OP": "+"}],
 [{"LEMMA":"benefit"},{"IS_ALPHA": true, "OP": "+"},{"LEMMA": "card"}],
 [{"LEMMA":"qualify"},{"IS_ALPHA": true, "OP": "+"},{"LEMMA": "benefit"}],
-[{"POS": "VERB", "OP": "+"},{"LEMMA": "shoprunner"}],
+[{"LEMMA":"what","OP":"?"},{"LEMMA": "transaction"},{"IS_ALPHA": true, "OP": "+"},{"LEMMA": "point"}],
+[{"LEMMA": "transaction"},{"IS_ALPHA": true, "OP": "+"},{"LEMMA": "point"}],
+[{"POS": "VERB", "OP": "+"},{"LEMMA": "accelerator"}],
 [{"POS": "VERB", "OP": "+"},{"LEMMA": "postmate"}],
-[{"TAG": "DT", "OP": "*"},{"POS":"NOUN","OP":"+"},{"TAG":"IN"},{"LEMMA": "postmate"}],
-[{"LEMMA": "benefit"},{"TAG": "IN"},{"TAG": "PRP$", "OP": "?"},{"POS": "NOUN", "OP": "+"}]
+[{"POS": "VERB", "OP": "+"},{"LEMMA": "shoprunner"}],
+[{"TAG": "DT", "OP": "*"},{"POS":"NOUN","OP":"+"},{"TAG":"IN"},{"LEMMA": "postmate"}]
 ]
