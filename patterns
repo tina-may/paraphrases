@@ -1,6 +1,0 @@
-[{'POS': 'VERB'},
-           {'LEMMA': 'shoprunner'}],
-[{'LEMMA': 'benefit'},
-           {'TAG': 'IN'},
-           {'TAG': 'PRP$', 'OP': '?'},
-           {'POS': 'NOUN', 'OP': '+'}]

@@ -147,15 +147,12 @@ class Paraphrase_Maker:
 
 def parse_arguments():
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        '--regex_tsv', help='path to regex file', required=True)
-    parser.add_argument('--general_rules_tsv',
-                        help='path to general rules', required=True)
-    parser.add_argument('--seeds_tsv', help='path to seeds', required=True)
-    parser.add_argument(
-        '--end_number', help='list of possible string replacements', required=True)
-    parser.add_argument('--patterns_json',
-                        help='json of spacy patterns', required=True)
+    parser.add_argument('--regex_tsv', help='regex tsv of regular expressions that correspond to each intent, columns: 1) intent label 2) regular expression that generates a paraphrase for that intent', required=True)
+    parser.add_argument('--general_rules_tsv', help='general rules tsv with columns: 1) regular expression 2) possible replacement strings separated by \'||\'', required=True)
+    parser.add_argument('--seeds_tsv', help='tsv with columns: 1) intent label 2) cannonical paraphrase for that intent', required=True)
+    parser.add_argument('--end_number', help='number of paraphrases required for each intent', required=True)
+    parser.add_argument('--patterns_json', help='json of spacy matching patterns for short sentence and phrase patterns within existing paraphrases', required=True)
+   
     args = parser.parse_args()
     return args
 
